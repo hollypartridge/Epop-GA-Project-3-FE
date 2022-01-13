@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { getToken } from '../lib/auth'
-
-const baseUrl = '/api'
+import { baseUrl } from '../config'
 
 export function headers() {
   return {
@@ -14,15 +13,15 @@ export function getAllProjects() {
 }
 
 export function getSingleProject(projectId) {
-  return axios.get(`/api/projects/${projectId}`)
+  return axios.get(`${baseUrl}/projects/${projectId}`)
 }
 
 export function createProject(formData) {
-  return axios.post('/api/projects', formData, headers())
+  return axios.post(`${baseUrl}/projects`, formData, headers())
 }
 
 export function deleteProject(projectId) {
-  return axios.delete(`/api/projects/${projectId}`, headers())
+  return axios.delete(`${baseUrl}/projects/${projectId}`, headers())
 }
 
 export function register(formData) {
