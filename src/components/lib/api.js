@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { getToken } from '../lib/auth'
-import { baseUrl } from '../config'
+import { baseUrl } from '../lib/config'
 
 export function headers() {
   return {
