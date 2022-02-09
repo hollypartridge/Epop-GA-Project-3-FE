@@ -34,86 +34,80 @@ function Registration() {
   console.log('formErrors', formErrors)
 
   return (
-    <section>
-      <div className='form-page'>
-        <div className='form-left'>
+    <div className='form'>
+      <div className='form-div'>
+        <div className='form-title'>
+          <p className='form-field'>🦋 Register 🦋</p>
         </div>
-        <div className='form-right'>
-          <form
-            className='form'
-            onSubmit={handleSubmit}
-          >
+        <form
+          onSubmit={handleSubmit}
+        >
+          <div className="form-field">
+            <label htmlFor="username">Username</label>
             <div className="form-field">
-              <label htmlFor="username">Username</label>
-              <div>
-                <input 
-                  className='input'
-                  name="username"
-                  id="username"
-                  placeholder="username"
-                  onChange={handleInputChange}
-                />
-              </div>
-              {formErrors.username && <p className="error-style">Username is a required field</p>}
+              <input 
+                className='input'
+                name="username"
+                id="username"
+                onChange={handleInputChange}
+              />
             </div>
+            {formErrors.username && <p className="error">Username is a required field</p>}
+          </div>
+          <div className="form-field">
+            <label htmlFor="email">Email</label>
             <div className="form-field">
-              <label htmlFor="email">Email</label>
-              <div>
-                <input 
-                  className='input'
-                  name="email"
-                  id="email"
-                  placeholder="email"
-                  onChange={handleInputChange}
-                />
-              </div>
-              {formErrors.email && <p className="error-style">Email is a required field</p>}
+              <input 
+                className='input'
+                name="email"
+                id="email"
+                onChange={handleInputChange}
+              />
             </div>
+            {formErrors.email && <p className="error">Email is a required field</p>}
+          </div>
+          <div className="form-field">
+            <label htmlFor="password">Password</label>
             <div className="form-field">
-              <label htmlFor="password">Password</label>
-              <div>
-                <input 
-                  className='input'
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="password"
-                  onChange={handleInputChange}
-                />
-              </div>
-              {formErrors.password && <p className="error-style">Password is a required field</p>}
+              <input 
+                className='input'
+                type="password"
+                name="password"
+                id="password"
+                onChange={handleInputChange}
+              />
             </div>
+            {formErrors.password && <p className="error">Password is a required field</p>}
+          </div>
+          <div className="form-field">
+            <label htmlFor="passwordConfirmation">Password Confirmation</label>
             <div className="form-field">
-              <label htmlFor="passwordConfirmation">Password Confirmation</label>
-              <div>
-                <input  
-                  className='input'
-                  type="password"
-                  name="passwordConfirmation"
-                  id="passwordConfirmation"
-                  placeholder="password confirmation"
-                  onChange={handleInputChange}
-                />
-              </div>
-              {formErrors.passwordConfirmation && <p className="error-style">Passwords do not match</p>}
+              <input  
+                className='input'
+                type="password"
+                name="passwordConfirmation"
+                id="passwordConfirmation"
+                onChange={handleInputChange}
+              />
             </div>
-            <div className="FIELD">
-              <div className='button-div'
-                htmlFor="button">
-                <button 
-                  id="button"
-                  className='button'
-                  type="submit"
-                >Register Me!</button>
-              </div>
-              <div className='opposite-text'>
-                <p>Already a member?  <Link to="/login">Click here</Link></p> 
-              </div>
+            {formErrors.passwordConfirmation && <p className="error">Passwords do not match</p>}
+          </div>
+          <div className="FIELD">
+            <div className='submit-button form-field'
+              htmlFor="button">
+              <button 
+                id="button"
+                className='button'
+                type="submit"
+              >Register</button>
             </div>
-          </form>
-        </div>
+            <div className='auth-para'>
+              <p>Already a member?  <Link className='auth-link' to="/login">Click here</Link></p> 
+            </div>
+          </div>
+        </form>
       </div>
-    </section>
+    </div>
   )
 }
 

@@ -1,4 +1,3 @@
-import Select from 'react-select'
 import React from 'react'
 import { getSingleProject, headers } from '../lib/api'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -15,10 +14,8 @@ const initialState = {
 
 function ProjectEdit() {
   const [formData, setFormData] = React.useState(initialState)
-  const [isUploadingImage, setIsUploadingImage] = React.useState(false)
   const [formErrors, setFormErrors] = React.useState(initialState)
   const [primaryCharacterCount, setPrimaryCharacterCount] = React.useState(0)
-  const [secondaryCharacterCount, setSecondaryCharacterCount] = React.useState(0)
   const { projectId } = useParams()
   const navigate = useNavigate()
     
@@ -34,57 +31,14 @@ function ProjectEdit() {
     getData()
   }, [projectId])
 
-  const categoryTags = [
-    { value: 'Advertising', label: 'Advertising' },
-    { value: 'Animation', label: 'Animation' },
-    { value: 'Art', label: 'Art' },
-    { value: 'Gaming', label: 'Gaming' },
-    { value: 'Graphic Design', label: 'Graphic Design' },
-    { value: 'Health', label: 'Health' },
-    { value: 'Illustration', label: 'Illustration' },
-    { value: 'Music', label: 'Music' },
-    { value: 'Photography', label: 'Photography' },
-    { value: 'Writing', label: 'Writing' }
-  ]
-
   const handleTextInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
     setFormErrors({ ...formErrors,  [e.target.name]: '' })
   }
 
-  const handleSelectInputChange = (e) => {
-    const selectedItems = e ? e.map(item => item.value) : []
-    setFormData({ ...formData, categoryTag: selectedItems })    
-  }
-
   let primaryCharacterCountLimit = false
   if (primaryCharacterCount > 250) {
     primaryCharacterCountLimit = true
-  }
-
-  let secondaryCharacterCountLimit = false
-  if (secondaryCharacterCount > 1000) {
-    secondaryCharacterCountLimit = true
-  }
-
-  const handlePrimaryImageUpload = async (e) => {
-    const data = new FormData()
-    data.append('file', e.target.files[0])
-    data.append('upload_preset', process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET)
-    setIsUploadingImage(true)
-    const res = await axios.post(process.env.REACT_APP_CLOUDINARY_URL, data)
-    setFormData({ ...formData, primaryImage: res.data.url })
-    setIsUploadingImage(false)
-  }
-
-  const handleSecondaryImageUpload = async (e) => {
-    const data = new FormData()
-    data.append('file', e.target.files[0])
-    data.append('upload_preset', process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET)
-    setIsUploadingImage(true)
-    const res = await axios.post(process.env.REACT_APP_CLOUDINARY_URL, data)
-    setFormData({ ...formData, secondaryImage: res.data.url })
-    setIsUploadingImage(false)
   }
 
   const handleSubmit = async (e) => {
@@ -100,117 +54,89 @@ function ProjectEdit() {
   }
 
   return (
-    <section>
-      <div className='edit-project-page'>
-        <div className='form'>
-          <form
-            onSubmit={handleSubmit}
-          >
-            <div className="form-field">
-              <label htmlFor="projectTitle">Project Title *</label>
-              <div>
-                <input 
-                  className='input'
-                  name="projectTitle"
-                  id="projectTitle"
-                  placeholder="Project Title"
-                  onChange={handleTextInputChange}
-                  value={formData.projectTitle}
-                />
-              </div>
-              {formErrors.projectTitle && <p className="error-style">Project Title is a required field</p>}
-            </div>
-            <div className="form-field">
-              <label htmlFor="primaryDescription">Primary Description* <span className="character-count">{primaryCharacterCount}/250</span></label>
-              <div>
-                <textarea 
-                  className={primaryCharacterCountLimit ? 'input-text-area-red' : 'input-text-area'}
-                  name="primaryDescription"
-                  id="primaryDescription"
-                  placeholder="Primary Description"
-                  onChange={handleTextInputChange}
-                  onChangeCapture={(e) => setPrimaryCharacterCount(e.target.value.length)}
-                  value={formData.primaryDescription}
-                />
-              </div>
-              {primaryCharacterCountLimit ? <p className="error-style">Too many characters</p> : ''}
-              {formErrors.primaryDescription && <p className="error-style">Primary Description is a required field</p>}
-            </div>
-            {isUploadingImage && <p>Image uploading</p>}            
-            <div className="primary-image-container">
-              <img className="primary-image" src={formData.primaryImage} alt="uploaded primary image"/>
-            </div>              
-            <div className="form-field">
-              <label htmlFor="primaryImage">Primary Image *</label>
-              <div>
-                <input 
-                  type="file"
-                  name="primaryImage"
-                  id="primaryImage"
-                  accept="image/png, image/jpeg"
-                  placeholder="Primary Image"
-                  onChange={handlePrimaryImageUpload}
-                />
-              </div>
-              {formErrors.primaryImage && <p className="error-style">Primary Image is a required field</p>}
-            </div>                     
-            <div className="form-field">
-              <label htmlFor="secondaryDescription">Secondary Description <span className="character-count">{secondaryCharacterCount}/1000</span></label>
-              <div>
-                <textarea 
-                  className={secondaryCharacterCountLimit ? 'input-text-area-red' : 'input-text-area'}
-                  name="secondaryDescription"
-                  id="secondaryDescription"
-                  placeholder="Secondary Description"
-                  onChange={handleTextInputChange}
-                  onChangeCapture={(e) => setSecondaryCharacterCount(e.target.value.length)}
-                  value={formData.secondaryDescription}
-                />
-              </div>
-              {secondaryCharacterCountLimit ? <p className="error-style">Too many characters</p> : ''}
-            </div>
-            {isUploadingImage && <p>Image uploading</p>}
-            {formData.secondaryImage.length !== 0 &&
-            <div className="secondary-image-container">
-              <img className="secondary-image" src={formData.secondaryImage} alt="uploaded secondary image"/>
-            </div>
-            }
-            <div className="form-field">
-              <label htmlFor="secondaryImages">Secondary Images</label>
-              <div>
-                <input 
-                  type="file"
-                  name="secondaryImages"
-                  id="secondaryImages"
-                  accept="image/png, image/jpeg"
-                  placeholder="Secondary Images"
-                  onChange={handleSecondaryImageUpload}
-                />
-              </div>
-            </div>              
-            <div className="form-field">
-              <label htmlFor="categoryTag">Category Tag</label>
-              <Select 
-                name='categoryTag'
-                placeholder='Choose Tag'
-                isMulti
-                options={categoryTags}
-                onChange={handleSelectInputChange}
-                value={''}
+    <div className='form'>
+      <div className='form-div'>
+        <div className='form-title'>
+          <p className='form-field'>🦋 Edit Project 🦋</p>
+        </div>
+        <form 
+          onSubmit={handleSubmit}
+        >
+          <div className='form-field'>
+            <label htmlFor="website">Website *</label>
+            <div className='form-field'>
+              <input 
+                className='input'
+                name="website"
+                id="website"
+                onChange={handleTextInputChange}
+                value={formData.website}
               />
             </div>
-            <div className="button-div">
-              <div>
-                <button 
-                  className="button"
-                  type="submit"
-                >Submit!</button>
-              </div>
+            {formErrors.website && <p className="error">Website is a required field</p>}
+          </div>
+          <div className='form-field'>
+            <label htmlFor="credit">Credits *</label>
+            <div className='form-field'>
+              <input 
+                className='input'
+                name="credit"
+                id="credit"
+                onChange={handleTextInputChange}
+                value={formData.credit}
+              />
             </div>
-          </form>
-        </div>
+            {formErrors.credit && <p className="error">Credits is a required field</p>}
+          </div>
+          <div className='form-field'>
+            <label htmlFor="hyperlink">URL *</label>
+            <div className='form-field'>
+              <input 
+                className='input'
+                name="hyperlink"
+                id="hyperlink"
+                onChange={handleTextInputChange}
+                value={formData.hyperlink}
+              />
+            </div>
+            {formErrors.hyperlink && <p className="error">URL is a required field</p>}
+          </div>
+          <div className='form-field'>
+            <label htmlFor="description">Description* <span className="character-count form-field">{primaryCharacterCount}/400</span></label>
+            <div className='form-field'>
+              <textarea 
+                className={primaryCharacterCountLimit ? 'input-text-area-red' : 'input-text-area'}
+                name="description"
+                id="description"
+                onChange={handleTextInputChange}
+                onChangeCapture={(e) => setPrimaryCharacterCount(e.target.value.length)}
+                value={formData.description}
+              />
+            </div>
+            {primaryCharacterCountLimit ? <p className="error">Too many characters</p> : ''}
+            {formErrors.description && <p className="error">Description is a required field</p>}
+          </div>
+          <div className='form-field'>
+            <label htmlFor="video">Video Walkthrough *</label>
+            <div className='form-field'>
+              <input 
+                className='input'
+                name="video"
+                id="video"
+                onChange={handleTextInputChange}
+                value={formData.video}
+              />
+            </div>
+            {formErrors.video && <p className="error">Video Walkthrough is a required field</p>}
+          </div>
+          <div className="submit-button form-field">
+            <button 
+              type="submit"
+            >Submit!</button>
+          </div>
+        </form>
       </div>
-    </section>
+    </div>
   )
 }
 

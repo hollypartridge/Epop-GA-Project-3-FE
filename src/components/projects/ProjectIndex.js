@@ -26,64 +26,55 @@ function ProjectIndex() {
     setKeyword(e.target.value)
   }
 
-  console.log('proj index', projects)
+  const searchProducts = projects.filter(project => {
+    if (keyword === '') {
+      return project
+    } else if (project.website.toLowerCase().includes(keyword.toLowerCase())) {
+      return project
+    }
+  })
+
   return (
     <div className='index'>
-      <section>
-        <div className='secondary-nav'>
-          <Link to="/projects">Latest</Link>
-          <Link to="/projects">For You</Link>
-          <Link to="/projects">Archive</Link>
-          <Link to="/projects">Catagories</Link>
+      <div className='index-title'>
+        <div className='search-bar'>
+          <input 
+            placeholder='Search by name...' 
+            type='text'
+            id='input'
+            onChange={handleSearch}
+            value={keyword}
+          />
         </div>
-      </section>
-      <section>
-        <div className='index-title'>
-          <div>
-            <h1>Projects</h1>
-          </div>
-          <div>
-            <input 
-              placeholder='Search by name...' 
-              type='text'
-              id='input'
-              onChange={handleSearch}
-              value={keyword}
-            />
-          </div>
-        </div>
-      </section>
-      <section>
+      </div>
+      <div className='projects-we-love'>
         {isLoading && <Loading />}
         {isError && <Error />}
         {projects &&
-        <div className='index-gallery'>
-          {projects.filter(project => {
-            if (keyword === '') {
-              return project
-            } else if (project.projectTitle.toLowerCase().includes(keyword.toLowerCase())) {
-              return project
-            }
-          }).map(project => (
-            <div key={project._id} className='index-card'>
+          searchProducts.map(project => (
+            <div key={project._id} className='projects-we-love-single'>
               <Link to={`/projects/${project._id}`}>
-                <img 
-                  src={project.primaryImage}
-                  alt={project.projectTitle}
-                  className='index-img'
+                <video 
+                  src={project.video} 
+                  muted 
+                  loop 
+                  width='280px'
+                  onMouseOver={event => event.target.play()}
+                  onMouseOut={event => event.target.pause()}
                 />
-                <div className='index-info'>
-                  <h3 className='gallery-title'>{project.projectTitle}</h3>
-                  <p className='gallery-title'>{project.primaryDescription}</p>
-                  <p className='user'>Created By: {project.addedBy.username}</p>
-                  <p className='user'>Date Created: {project.createdAt.slice(0, 10).split('-').reverse().join('-')}</p>
-                </div>
               </Link>
+              <p className='project-description'>{project.createdAt.slice(0, 10).split('-').reverse().join(' ')}</p>
+              <a 
+                target='_blank' 
+                rel='noreferrer' 
+                href={project.hyperlink}
+              >
+                <p className='project-website'>{project.website}</p>
+              </a>
+              <p className='project-description'>{project.description}</p>
             </div>
           ))}
-        </div>
-        }
-      </section>
+      </div>
     </div>
   )
 }

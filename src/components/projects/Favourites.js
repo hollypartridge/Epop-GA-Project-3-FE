@@ -22,36 +22,38 @@ function Favourites() {
   }, [])
 
   return (
-    <div className='index'>
-      <section>
-        <div className='index-title'>
-          <div>
-            <h1>Your Favourites:</h1>
-          </div>
-        </div>
-      </section>
+    <div className='home'>
+      <div className='projects-we-love-title'>
+        <p>🦋 Your Favourites 🦋</p>
+      </div>
       <section>
         {isLoading && <Loading />}
         {isError && <Error />}
         {projects &&
-        <div className='index-gallery'>
+        <div className='projects-we-love'>
           {projects.filter(project => {
             return project.favouritedBy.length > 0
           }).map(project => (
-            <div key={project._id} className='index-card'>
+            <div key={project._id} className='projects-we-love-single'>
               <Link to={`/projects/${project._id}`}>
-                <img 
-                  src={project.primaryImage}
-                  alt={project.projectTitle}
-                  className='index-img'
+                <video 
+                  src={project.video} 
+                  muted 
+                  loop 
+                  width='280px'
+                  onMouseOver={event => event.target.play()}
+                  onMouseOut={event => event.target.pause()}
                 />
-                <div className='index-info'>
-                  <h3 className='gallery-title'>{project.projectTitle}</h3>
-                  <p className='gallery-title'>{project.primaryDescription}</p>
-                  <p className='user'>Created By: {project.addedBy.username}</p>
-                  <p className='user'>Date Created: {project.createdAt.slice(0, 10).split('-').reverse().join('-')}</p>
-                </div>
               </Link>
+              <p className='project-description'>{project.createdAt.slice(0, 10).split('-').reverse().join(' ')}</p>
+              <a 
+                target='_blank' 
+                rel='noreferrer' 
+                href={project.hyperlink}
+              >
+                <p className='project-website'>{project.website}</p>
+              </a>
+              <p className='project-description'>{project.description}</p>
             </div>
           ))}
         </div>

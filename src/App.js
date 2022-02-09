@@ -10,6 +10,7 @@ import ProjectIndex from './components/projects/ProjectIndex'
 import AddProject from './components/projects/AddProjects'
 import ProjectEdit from './components/projects/ProjectEdit'
 import Favourites from './components/projects/Favourites'
+import About from './components/common/About'
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
         <Route path = "/projects/:projectId/edit" element = {<ProjectEdit />} />  
         <Route path = '/error' element = {<Error />} />
         <Route path = '/loading' element = {<Loading />} />
-
+        <Route path = '/about' element = {<About />} />
       </Routes>
     </BrowserRouter>
   )

@@ -14,34 +14,26 @@ function Nav() {
   return (
     <nav>
       <div className='primary-nav'>
-        <div>
-          <Link to="/"><img 
-            src='https://i.imgur.com/yM71o7j.png' 
-            alt='logo'
-            id='logo'
-          /></Link>
+        <div className='nav-mobile'>
+          <Link to="/"><button id='epop'>epop</button></Link>
+          <Link to="/projects"><button>archive</button></Link>
         </div>
-        <div className='nav-right'>
+        <div className='nav-mobile'>
           {isAuth ? (
             <>
-              <Link to="/favourites" id='favourites'>
-                <img 
-                  src='https://i.imgur.com/hN82Ce2.png' 
-                  className='heart-nav'
-                />
-              </Link>
-              <Link to="/projects/create">Add Project</Link>
-              <button 
-                onClick={handleLogout}
-                className='logout-button'>
-                  Log Out</button>
+              <Link to="/favourites"><button>Favourites</button></Link>
+              <Link to="/projects/create"><button>Submit</button></Link>
+              <button onClick={handleLogout}>Log Out</button>
             </>
           ) : (
             <>
-              <Link to="/register"><button className='nav-button'>Sign up</button></Link>
-              <Link to="/login">Login</Link>
+              <Link to="/register"><button>Sign up</button></Link>
+              <Link to="/login"><button>Login</button></Link>
             </>
           )}
+        </div>
+        <div className='nav-mobile'>
+          <Link to="/about"><button>?</button></Link>
         </div>
       </div>
     </nav>

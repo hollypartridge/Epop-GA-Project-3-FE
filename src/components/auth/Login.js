@@ -33,61 +33,60 @@ function Login() {
   console.log('FROM', formData)
   
   return (
-    <section>
-      <div className='form-page'>
-        <div className='form-left'>
+    <div className='form'>
+      <div className='form-div'>
+        <div className='form-title'>
+          <p className='form-field'>🦋 Login 🦋</p>
         </div>
-        <div className='form-right'>
-          <form
-            className='form'
-            onSubmit={handleSubmit}
-          >
-            <div className="form-field">
-              <label htmlFor="email">Email</label>
-              <div>
-                <input 
-                  className='input'
-                  name="email"
-                  id="email"
-                  placeholder="email"
-                  onChange={handleInputChange}
-                />
-              </div>
+        <form
+          onSubmit={handleSubmit}
+        >
+          <div className="form-field">
+            <label htmlFor="email">Email</label>
+            <div className='form-field'>
+              <input 
+                className='input'
+                name="email"
+                id="email"
+                onChange={handleInputChange}
+              />
             </div>
-            <div className="form-field">
-              <label htmlFor="password">Password</label>
-              <div>
-                <input 
-                  className='input'
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="password"
-                  onChange={handleInputChange}
-                />
-              </div>
+          </div>
+          <div className="form-field">
+            <label htmlFor="password">Password</label>
+            <div className='form-field'>
+              <input 
+                className='input'
+                type="password"
+                name="password"
+                id="password"
+                onChange={handleInputChange}
+              />
             </div>
-            <div>
-              <div className='button-div'
-                htmlFor="button">
-                <button 
-                  id="button"
-                  className='button'
-                  type="submit"
-                >Log Me In!</button>
-              </div>
+          </div>
+          <div>
+            <div className='submit-button form-field'
+              htmlFor="button">
+              <button 
+                id="button"
+                className='button'
+                type="submit"
+              >Log Me In!</button>
+            </div>
+            <div className='form-field'>
               {isError && (
-                <p className="error-style">Email or Password were incorrect. Please try again.</p>
+                <p className="error">Email or Password were incorrect. Please try again.</p>
               )}
-              <div className='opposite-text'>
-                <p>Not a member?  <Link to="/register">Click here</Link></p> 
+              <div className='form-field auth-info'>
+                <p className='form-field auth-para'>Not a member? 
+                  <Link className='auth-link' to="/register"> Click here</Link>
+                </p> 
               </div>
             </div>
-          </form>
-        </div>
-        
-      </div>
-    </section>
+          </div>
+        </form>
+      </div>   
+    </div>
   )
 
 }

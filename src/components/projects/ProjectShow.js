@@ -16,21 +16,20 @@ function ProjectShow() {
   const [isError, setIsError] = React.useState(false)
   const isLoading = !project && !isError
   const [isFavourite, setIsFavourite] = React.useState(false)
+  const [createdAt, setCreatedAt] = React.useState(null)
 
   React.useEffect(() => {
     const getData = async () => {
       try {
         const res = await getSingleProject(projectId)
         setProject(res.data)
+        setCreatedAt(res.data.createdAt.slice(0, 10).split('-').reverse().join(' '))
       } catch (err) {
         setIsError(true)
       }
     }
     getData()
   }, [projectId])
-
-
-  console.log(project)
 
   const handleDelete = async () => {
     if (window.confirm('Are you sure you want to delete this project?')) {
@@ -44,17 +43,13 @@ function ProjectShow() {
   }
 
   const handleFavourites = async () => {
-    // project.favourite = true
     setIsFavourite(true)
     const res = await axios.post(`/api/projects/${projectId}/favourite`, isFavourite, headers())
     console.log('RES', res)
-    // console.log(project.favourite)
   }
 
   const handleRemoveFavourite = () => {
-    // project.favourite = false
     setIsFavourite(false)
-    // console.log(project.favourite)
   }
 
   console.log(isFavourite)
@@ -64,70 +59,81 @@ function ProjectShow() {
       {isLoading && <Loading />}
       {isError && <Error />}
       {project &&
-        <div className='show'>
-          <div className='left-side show-primary-image'>
-            <img 
-              src={project.primaryImage} 
-              alt={project.projectTitle}
-            />
-          </div>
-          <div className='right-side'>
-            <h1>{project.projectTitle}</h1>
-            <p className='user-show'>Created By: {project.addedBy.username}</p>
-            <p className='user-show'>Date Created: {project.createdAt.slice(0, 10).split('-').reverse().join('-')}</p>
-            <div className='buttons'>
-              {!isOwner(project.addedBy._id) ? ( 
-                <button 
-                  className='favourites'
-                  onClick={!isFavourite ? (handleFavourites) : (handleRemoveFavourite)}
-                >
-                  {isFavourite ? (
-                    <>
-                      <img 
-                        src='https://i.imgur.com/P4CS5VY.png'
-                        className='show-icons' 
-                      />
-                      <p>Remove from Favourites</p> 
-                    </>
-                  ) : (
-                    <>
-                      <img 
-                        src='https://i.imgur.com/hN82Ce2.png'
-                        className='show-icons' 
-                      />
-                      <p>Add To Favourites</p>
-                    </>
-                  )}
-                </button>
-              ) : (
-                <>
-                  <Link to={`/projects/${projectId}/edit`}>
-                    <button>
-                      <img 
-                        src='https://i.imgur.com/nqQ6yj1.png'
-                        className='show-icons' 
-                      />
-                    </button>
-                  </Link>
-                  <button onClick={handleDelete}>
-                    <img 
-                      src='https://i.imgur.com/ygGtZOs.png' 
-                      className='show-icons'
-                    />
-                  </button>
-                </>)}
+        <div className='home'>
+          <div className='featured-project'>
+            <div className='web-display-bar'>
+              <div className='web-display-controls'>
+                <div className='dots-display'></div>
+                <div className='dots-display'></div>
+                <div className='dots-display'></div>
+              </div>
+              <div className='website-bar'>
+                <p id='display-url'>{project.website}</p>
+              </div>
+              <div className='web-display-controls'>
+                <div className='dots-display-hidden'></div>
+                <div className='dots-display-hidden'></div>
+                <div className='dots-display-hidden'></div>
+              </div>
             </div>
-            <h4>{project.primaryDescription}</h4>
-            <p className='description-show'>{project.secondaryDescription}</p>
+            <div className='video-primary-homepage'>
+              <video src={project.video} autoPlay muted loop width='800px' />
+            </div>
+            <div className='show-info'>
+              <p id='primary-created-at'>{createdAt}</p>
+              <a 
+                target='_blank' 
+                rel='noreferrer' 
+                href={project.hyperlink}
+                id='primary-link'
+              >
+                <p>{project.website}</p>
+              </a>
+              <p id='primary-description'>{project.description}</p>
+              <p id='primary-credits'>credits {project.credit}</p>
+            </div>
           </div>
+          <div className='buttons'>
+            {!isOwner(project.addedBy._id) ? ( 
+              <button
+                onClick={!isFavourite ? (handleFavourites) : (handleRemoveFavourite)}
+              >
+                {isFavourite ? (
+                  <>
+                    <p>Remove from Favourites</p> 
+                  </>
+                ) : (
+                  <>
+                    <p>Add To Favourites</p>
+                  </>
+                )}
+              </button>
+            ) : (
+              <>
+                <Link to={`/projects/${projectId}/edit`}>
+                  <button>
+                    <p>Edit</p>
+                  </button>
+                </Link>
+                <button onClick={handleDelete}>
+                  <p>Delete</p>
+                </button>
+              </>)}
+          </div>
+          <h4>{project.primaryDescription}</h4>
+          <p className='description-show'>{project.secondaryDescription}</p>
         </div>
       }
-      <div className='comments'>
-        <h1>Comments</h1>
-        <AddComment 
-          project = {project}
-          setProject = {setProject}
-        />
+      <div>
+        <div className='projects-we-love-title'>
+          <p>🦋 Comments 🦋</p>
+        </div>
+        <div className='comments'>
+          <AddComment 
+            project = {project}
+            setProject = {setProject}
+          />
+        </div>
       </div>
     </section>
   )

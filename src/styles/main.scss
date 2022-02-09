@@ -1,175 +1,209 @@
 $primarygray: #312727;
 $mobile: 600px;
-$tablet: 1000px;
+$tablet: 900px;
 
-// * Main Font
 * {
-  font-family: 'Noto Sans', sans-serif;
-
+  font-family: 'Helvetica', sans-serif;
+  background-color: #e3ceff;
 }
-
 
 // * NavBar
 
-nav {
-  font-family: 'Noto Sans', sans-serif;
-  font-weight: 700;
-  a {
-    text-decoration: none;
-    color: $primarygray;
-  }
-}
-
-.heart-nav {
-  width: 20px;
-  margin: 0px 15px;
-}
-
-#favourites {
-  padding: 10px 0px 0px;
-}
-
-#logo {
-  width: 90px;
-  margin: 0px 0px 0px 10px;
-}
-
 .primary-nav {
   display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid rgb(216, 216, 216);
-}
-
-.nav-right {
-  margin: 0px 10px 10px 0px;
-  font-size: 16px;
-  display: flex;
+  justify-content: center;
   align-items: center;
-}
-
-.nav-button {
-  margin: 0px 15px 0px 0px;
-  background-color: $primarygray;
-  color: white;
-  padding: 4px 22px 7px;
-  font-family: 'Noto Sans', sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  border: none;
-  border-radius: 2px;
-  cursor: pointer;
-}
-
-.logout-button {
-  margin: 0px 0px 0px 15px;
-  background-color: $primarygray;
-  color: white;
-  padding: 4px 22px 7px;
-  font-family: 'Noto Sans', sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  border: none;
-  border-radius: 2px;
-  cursor: pointer;
-}
-
-.secondary-nav {
-  margin: 12px 0px 0px;
-  border-bottom: 1px solid rgb(235, 234, 234);
-  padding: 0px 0px 15px 0px;
+  margin: 20px 0px;
+  @media screen and (max-width:$mobile) {
+    margin: 0px 0px 20px 0px;
+    flex-direction: column;
+  }
+  button {
+    font-size: 14px;
+    text-transform: uppercase;
+    background-color: blue;
+    color: white;
+    padding: 8px 14px 4px;
+    border: none;
+    border-radius: 50px;
+    margin: 10px 5px;
+    cursor: pointer;
+    border: 1px solid blue;
+    &:hover {
+      background-color: white;
+      color: blue;
+    }
+    @media screen and (max-width:$mobile) {
+      font-size: 12px;
+      margin: 0px;
+      width: 700px;
+      overflow: hidden;
+      background-color: white;
+      color: blue;
+      border-bottom: 1px solid blue;
+      border-top: none;
+      padding: 10px 14px 10px;
+    }
+  }
   a {
-  padding: 0px 20px;
-  text-decoration: none;
-  color: $primarygray;
-  font-family: 'Noto Sans', sans-serif;
-  font-weight: 700;
+    color: white;
+    text-decoration: none;
   }
 }
 
-.hero {
+.nav-mobile {
+  @media screen and (max-width:$mobile) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+// * Homepage
+
+.featured-project {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSayW06hxaJH8n1OXe9G4auGB4u5qMFEOoqPDwzB8e4sbptUlFGldzlV8jZMG7Bo3FQto&usqp=CAU');
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 480px;
+  align-items: center;
+  margin: 20px 0px 10px;
+}
+
+.video-primary-homepage {
+  video {
+  border-right: 1px solid blue;
+  border-left: 1px solid blue;
+  border-bottom: 1px solid blue;
+  width: 800px;
   @media screen and (max-width:$tablet) {
-    height: 300px;
-    p {
-      width: 400px;
-    }
+    width: 500px;
+  }
+  @media screen and (max-width:$mobile) {
+    width: 350px;
+    border: none;
+    margin: 20px 0px 0px;
+  }
   }
 }
 
-.home-section {
-  height: 550px;
+.web-display-bar {
+  height: 30px;
+  border: 1px solid blue;
+  background-color: white;
+  width: 800px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  p {
-    width: 600px;
-  }
   @media screen and (max-width:$tablet) {
-    justify-content: center;
-    height: 300px;
-    p {
-      width: 400px;
-    }
+    width: 500px;
   }
-}
-
-.home-img {
-  width: 400px;
-  margin: 0px 10px;
-  @media screen and (max-width:$tablet) {
+  @media screen and (max-width:$mobile) {
     display: none;
   }
 }
 
-.home-button {
-  margin: 30px 0px 0px 10px;
-  background-color: $primarygray;
-  color: white;
-  padding: 10px 20px;
-  font-family: 'Noto Sans', sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  border: none;
-  border-radius: 2px;
-  cursor: pointer;
+.dots-display {
+  width: 10px;
+  height: 10px;
+  background-color: blue;
+  border-radius: 25px;
+  margin: 0px 3px;
 }
 
-.home h1 {
-  font-family: 'Noto Sans', sans-serif;
-  font-weight: 700;
-  color: $primarygray;
-  text-transform: uppercase;
-  font-size: 40px;
-  margin: 0px 10px;
+.dots-display-hidden {
+  width: 10px;
+  height: 10px;
+  background-color: blue;
+  border-radius: 25px;
+  margin: 0px 3px;
+  visibility: hidden;
 }
 
-.home p {
-  font-family: 'Noto Sans', sans-serif;
-  color: $primarygray;
+.web-display-controls {
+  display: flex;
+  margin: 0px 5px;
+  background-color: white;
+}
+
+.website-bar {
+  border: 1px solid blue;
+  background-color: white;
+}
+
+.website-bar p {
+  font-size: 11px;
+  margin: 4px 100px;
+  color: blue;
+  background-color: white;
+}
+
+.primary-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px 0px 20px;
+  p {
+    font-size: 13px;
+  }
+  a {
+    color: black;
+  }
+}
+
+button {
   font-size: 14px;
-  margin: 0px 10px;
+  text-transform: uppercase;
+  background-color: blue;
+  color: white;
+  padding: 8px 14px 4px;
+  border: none;
+  border-radius: 50px;
+  margin: 10px 5px;
+  cursor: pointer;
+  border: 1px solid blue;
+  &:hover {
+    background-color: white;
+    color: blue;
+  }
 }
 
-.home h3 {
-  font-family: 'Noto Sans', sans-serif;
-  font-weight: 700;
-  color: $primarygray;
-  font-size: 18px;
-  margin: 0px 10px 30px;
+a {
+  color: white;
+  text-decoration: none;
 }
 
-.home h2 {
-  font-family: 'Noto Sans', sans-serif;
-  font-weight: 700;
-  color: $primarygray;
-  font-size: 20px;
+#primary-created-at {
+  margin: 0px;
+  color: black;
+}
+
+#primary-link p {
+  margin: 4px 0px 8px 0px;
+  color: blue;
+}
+
+#primary-description {
+  width: 60%;
   text-align: center;
+  color: black;
+}
+
+#primary-credits {
+  margin: 8px 0px 0px 0px;
+  text-transform: uppercase;
+  color: black;
+  width: 70%;
+  text-align: center;
+}
+
+.project-description {
+  width: 280px;
+  text-align: left;
+  font-size: 13px;
+}
+
+.project-website {
+  text-align: left;
+  font-size: 13px;
 }
 
 .projects-we-love {
@@ -177,179 +211,68 @@ nav {
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
-  border-bottom: 1px solid rgb(235, 234, 234);
-  img, h3 {
-    width: 200px;
-    font-size: 15px;
-  }
-  @media screen and (max-width:$tablet) {
-    display: none;
-  }
-}
-
-.projects-we-love-single {
-  width: 15%;
-  margin: 10px;
 }
 
 .projects-we-love-title {
-  margin: 10px 0px 0px 0px;
-  @media screen and (max-width:$tablet) {
-    display: none;
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.projects-we-love-single {
+  margin: 15px;
+  a {
+    color: blue;
   }
 }
 
-#projects-we-love-title {
-  margin: 50px 0px 20px 10px;
-}
-
-.hero-para {
-  width: 500px;
+.browse-archive {
+  margin: 20px 0px;
+  display: flex;
+  justify-content: center;
+  @media screen and (max-width:$mobile) {
+    margin: 0px 0px 20px;
+  }
 }
 
 // * Index Page
 
-.index-title {
+.search-bar {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 10px 10px;
-  @media screen and (max-width:$mobile) {
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
-}
-
-.index h1 {
-  margin: 10px 0px 0px 10px;
-  font-family: 'Noto Sans', sans-serif;
-  font-weight: 700;
-  color: $primarygray;
-  font-size: 24px;
-  @media screen and (max-width:$mobile) {
-    margin: 10px 0px 10px 0px;
-  }
-}
-
-.index input {
-  border: 1px solid rgb(194, 194, 194);
-  padding: 3px 0px 3px 4px;
-  border-radius: 4px;
-}
-
-#input {
-  width: 150px;
-}
-
-.index-gallery {
-  margin: 30px 0px 0px 0px;
-  display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  a {
-    text-decoration: none;
+  margin: 20px 0px;
+  input {
+    border: 1px solid blue;
+    border-radius: 25px;
+    padding: 8px 14px 4px;
+    text-transform: uppercase;
+    color: blue;
   }
-}
-
-.index-card {
-  height: 100%;
-  margin: 0px 0px 30px 0px;
-}
-
-.index-img, .index-info {
-    width: 250px;
-    margin: 0px 10px;
-}
-
-.index-img {
-  border-radius: 5px;
-}
-
-.index h3 {
-  font-family: 'Noto Sans', sans-serif;
-  font-weight: 700;
-  color: $primarygray;
-  font-size: 18px;
-}
-
-.gallery-title {
-  font-family: 'Noto Sans', sans-serif;
-  color: #8f8f8f;
-  font-size: 13px;
-}
-
-.user {
-  text-transform: uppercase;
-  font-size: 12px;
-  margin: 0px;
-  color: $primarygray;
-  font-family: 'Noto Sans', sans-serif;
 }
 
 // * Show Page
 
-.show-primary-image {
-  img {
-    width: 500px;
-    @media screen and (max-width:$tablet) {
-      width: 400px;
-    }
-  }
-}
-
-.right-side {
-  width: 500px;
-  margin: 0px 0px 0px 40px;
-  font-family: 'Noto Sans', sans-serif;
-  .description-show {
-    font-size: 15px;
-  }
-  h1 {
-    font-size: 23px;
-    margin: 0px 0px 10px 0px;
-    @media screen and (max-width:$tablet) {
-      margin: 10px 0px 10px 0px;
-    }
-  }
-  button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    margin: 10px 5px 0px 0px;
-  }
-  @media screen and (max-width:$tablet) {
-    width: 400px;
-    margin: 0px;
-  }
-}
-
 .buttons {
   display: flex;
+  justify-content: center;
   align-items: center;
-  margin: 10px 0px 0px 0px;
-}
-
-.favourites {
-  display: flex;
-  align-items: center;
+  margin: 20px 0px 0px 0px;
   p {
-    margin: 0px 0px 0px 10px;
-    cursor: pointer;
+    margin: 0px;
+    background-color: transparent;
   }
 }
 
-.show-icons {
-  width: 20px;
-}
-
-.show {
+.show-info {
   display: flex;
-  justify-content: center;
-  margin: 40px 0px 20px 0px;
-  @media screen and (max-width:$tablet) {
-    flex-direction: column;
-    align-items: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px 0px 0px;
+  p {
+    font-size: 13px;
+  }
+  a {
+    color: black;
   }
 }
 
@@ -358,37 +281,26 @@ nav {
 .comments {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  // border-top: 1px solid rgb(216, 216, 216);
-  h1 {
-    font-size: 23px;
-    margin: 10px 0px 10px;
-  }
-  button {
-    margin: 10px 0px 0px 0px;
-    background-color: $primarygray;
-    color: white;
-    padding: 10px 20px;
-    font-family: 'Noto Sans', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-  }
   textarea {
     width: 400px;
+    border: 1px solid blue;
+    &::placeholder {
+      color: black;
+      font-size: 14px;
+    }
   }
   form {
-    display: flex;
-    flex-direction: column;
-    // align-items: center;
+    text-align: center;
+  }
+  button {
+    margin: 30px 0px 10px;
   }
 }
 
 .index-info {
-  margin: 0px;
+  border-top: 1px solid blue;
+  margin: 20px 0px;
 }
 
 .user-and-time-comments {
@@ -400,491 +312,124 @@ nav {
   font-size: 14px;
   font-weight: 700;
   margin: 0px 5px 0px 0px;
-  color: $primarygray;
-  font-family: 'Noto Sans', sans-serif;
+  color: black;
 }
 
 .date-comments {
   font-size: 14px;
   margin: 0px 5px 0px 0px;
-  color: $primarygray;
-  font-family: 'Noto Sans', sans-serif;
+  color: black;
 }
 
 .comment-text {
-  font-size: 16px;
-}
-
-// * Log in and Registration pages
-
-.form-page {
-  background-image: url('./images-dh/form-background.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: none;
-  border-radius: 10%;
-  display: flex;
-  align-items: center;
-  filter: drop-shadow(0 0 0.2rem rgb(0, 0, 0));
-  margin: 100px 50px;
-  height: 70vh;
-  display: flex;
-  @media only screen and (max-width:$tablet) {
-    margin: 20px 10px;
-  }
-  @media only screen and (max-height: 500px) {
-    margin: 50px 0 0 0;
-  }
-  .form-left {
-    width: 50%;
-    @media only screen and (max-width:$tablet) {
-    display: none;
-    }
-    @media only screen and (max-height: 500px) {
-      display: none;
-    }
-  }
-
-  .form-right {
-    width: 50%;
-    height: 90%;
-    margin-right: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 12%;
-    @media only screen and (max-width:$tablet) {
-    width: 100%;
-    }
-    @media only screen and (max-height: 500px) {
-      text-align: center;
-      width: 100%;
-    }
-
-    .form {
-      .form-field {
-        margin: 20px;
-        @media only screen and (max-width:$tablet) {
-          text-align: center;
-        }
-        .input {
-          margin-top: 10px;
-          padding-left: 10px;
-          height: 40px;
-          width: 300px;
-          background-color: rgba(0, 0, 0, 0.137);
-          border-radius: 5%;
-          font-style: italic;
-          @media only screen and (max-width:$tablet) {
-            width: 250px;
-          }
-          @media only screen and (max-height: 500px) {
-            text-align: center;
-            color: black;
-          }
-        }
-      }      
-      .button-div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 40px;
-        width: 310px;
-        margin: 20px;
-        border-radius: 5%;
-        background-color: rgba(0, 0, 0, 0.425);
-        box-shadow: 0px 0px 5px 2px rgba(8, 5, 5, 1);
-        @media only screen and (max-width:$tablet) {
-          width: 270px;
-        }
-        .button {
-          height: 40px;
-          width: 310px;
-          background-color: rgba(0, 0, 0, 0);
-          border: none;
-          color: white;
-          font-weight: 500;
-        }
-        .button:hover {
-          font-weight: 800;
-        }
-        .button:focus {
-          transition: 1s;
-          font-size: 10px;
-          font-weight: 50;
-        }
-      }
-      .opposite-text {
-        text-align: center;
-        margin: 0 20px;
-      }
-    }
-  }
-}
-
-//  * Add project page
-
-.add-project-page {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.219)) , url('./images-dh/add-project-bg.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: none;
-  border-radius: 5%;
-  filter: drop-shadow(0 0 0.2rem rgb(0, 0, 0));
-  margin: 10px 50px;
-  height: 1500px;
-  @media only screen and (max-width:$tablet) {
-    margin: 20px 10px;
-  }
-  @media only screen and (max-height: 500px) {
-    margin: 20px 0 0 0;
-    height: 1000px;
-  }
-  .form {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    // align-items: center;
-    @media only screen and (max-width:$tablet) {
-    width: 100%;
-    }
-    @media only screen and (max-height: 500px) {
-      text-align: center;
-      width: 100%;
-    }
-      .form-field {
-        margin: 20px;
-        @media only screen and (max-width:$tablet) {
-          text-align: center;
-        }
-        .input {
-          margin-top: 10px;
-          padding-left: 10px;
-          height: 40px;
-          width: 800px;
-          background-color: rgba(0, 0, 0, 0.137);
-          border-radius: 5%;
-          font-style: italic;
-          @media only screen and (max-width:$tablet) {
-            width: 250px;
-          }
-          @media only screen and (max-height: 500px) {
-            text-align: center;
-            color: black;
-          }
-        }
-        .input-text-area {
-          margin-top: 10px;
-          padding-left: 10px;
-          height: 90px;
-          width: 800px;
-          background-color: rgba(0, 0, 0, 0.137);
-          border-radius: 5%;
-          font-style: italic;
-          @media only screen and (max-width:$tablet) {
-            width: 250px;
-          }
-          @media only screen and (max-height: 500px) {
-            text-align: center;
-            color: black;
-          }
-        }
-        .input-text-area-red {
-          color:red;
-          margin-top: 10px;
-          padding-left: 10px;
-          height: 90px;
-          width: 800px;
-          background-color: rgba(0, 0, 0, 0.137);
-          border-radius: 5%;
-          font-style: italic;
-          @media only screen and (max-width:$tablet) {
-            width: 250px;
-          }
-          @media only screen and (max-height: 500px) {
-            text-align: center;
-          }
-        }
-
-        .css-1s2u09g-control {
-          margin-top: 10px;
-          padding-left: 10px;
-          height: 90px;
-          width: 820px;
-          background-color: rgba(0, 0, 0, 0.137);
-          border-radius: 5%;
-          color: black;
-          font-style: italic;
-          @media only screen and (max-width:$tablet) {
-            width: 270px;
-          }
-          @media only screen and (max-height: 500px) {
-            width: 820px;
-            text-align: center;
-            color: black;
-          }
-          .css-14el2xx-placeholder {
-            color: black;
-          }
-        }
-      }
-      .button-div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 40px;
-        width: 820px;
-        margin: 20px;
-        border-radius: 5%;
-        background-color: rgba(0, 0, 0, 0.425);
-        box-shadow: 0px 0px 5px 2px rgba(8, 5, 5, 1);
-        @media only screen and (max-width:$tablet) {
-          width: 270px;
-        }
-        @media only screen and (max-height: 500px) {
-          width: 820px;
-        }
-        .button {
-          height: 40px;
-          width: 510px;
-          background-color: rgba(0, 0, 0, 0);
-          border: none;
-          font-weight: 500;
-        }
-        .button:hover {
-          font-weight: 800;
-        }
-        .button:focus {
-          transition: 1s;
-          font-size: 10px;
-          font-weight: 50;
-        }
-      }
-      .opposite-text {
-        text-align: center;
-        margin: 0 20px;
-        color: whitesmoke;
-      }
-  }
-}
-
-// * Edit project page
-
-.edit-project-page {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.219)) , url('./images-dh/edit-bg.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: none;
-  border-radius: 10%;
-  filter: drop-shadow(0 0 0.2rem rgb(0, 0, 0));
-  margin: 10px 50px;
-  height: 1500px;
-  @media only screen and (max-width:$tablet) {
-    margin: 20px 10px;
-  }
-  @media only screen and (max-height: 500px) {
-    margin: 20px 0 0 0;
-    height: 1000px;
-  }
-  .form {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    @media only screen and (max-width:$tablet) {
-    width: 100%;
-    }
-    @media only screen and (max-height: 500px) {
-      text-align: center;
-      width: 100%;
-    }
-      .form-field {
-        margin: 20px;
-        @media only screen and (max-width:$tablet) {
-          text-align: center;
-        }
-        .input {
-          margin-top: 10px;
-          padding-left: 10px;
-          height: 40px;
-          width: 800px;
-          background-color: rgba(0, 0, 0, 0.137);
-          border-radius: 5%;
-          font-style: italic;
-          @media only screen and (max-width:$tablet) {
-            width: 250px;
-          }
-          @media only screen and (max-height: 500px) {
-            text-align: center;
-            color: black;
-          }
-        }
-        .input-text-area {
-          margin-top: 10px;
-          padding-left: 10px;
-          height: 90px;
-          width: 800px;
-          background-color: rgba(0, 0, 0, 0.137);
-          border-radius: 5%;
-          font-style: italic;
-          @media only screen and (max-width:$tablet) {
-            width: 250px;
-          }
-          @media only screen and (max-height: 500px) {
-            text-align: center;
-            color: black;
-          }
-        }
-        .input-text-area-red {
-          color:red;
-          margin-top: 10px;
-          padding-left: 10px;
-          height: 90px;
-          width: 800px;
-          background-color: rgba(0, 0, 0, 0.137);
-          border-radius: 5%;
-          font-style: italic;
-          @media only screen and (max-width:$tablet) {
-            width: 250px;
-          }
-          @media only screen and (max-height: 500px) {
-            text-align: center;
-          }
-        }
-        .css-1s2u09g-control {
-          margin-top: 10px;
-          padding-left: 10px;
-          height: 90px;
-          width: 820px;
-          background-color: rgba(0, 0, 0, 0.137);
-          border-radius: 5%;
-          color: black;
-          font-style: italic;
-          @media only screen and (max-width:$tablet) {
-            width: 270px;
-          }
-          @media only screen and (max-height: 500px) {
-            width: 820px;
-            text-align: center;
-            color: black;
-          }
-          .css-14el2xx-placeholder {
-            color: black;
-          }
-          .css-g1d714-ValueContainer {
-            background-color: rgba(0, 0, 0, 0.137);
-            border-radius: 5%;
-            color: black;
-          }
-          .css-6j8wv5-Input {
-            background-color: rgba(0, 0, 0, 0.137);
-            border-radius: 5%;
-            color: black;
-          }
-          .css-26l3qy-menu {
-            background-color: rgba(0, 0, 0, 0.137);
-            border-radius: 5%;
-            color: black;
-          }
-        }
-      }
-      .button-div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 40px;
-        width: 820px;
-        margin: 20px;
-        border-radius: 5%;
-        background-color: rgba(0, 0, 0, 0.425);
-        box-shadow: 0px 0px 5px 2px rgba(8, 5, 5, 1);
-        @media only screen and (max-width:$tablet) {
-          width: 270px;
-        }
-        @media only screen and (max-height: 500px) {
-          width: 820px;
-        }
-        .button {
-          height: 40px;
-          width: 510px;
-          background-color: rgba(0, 0, 0, 0);
-          border: none;
-          color: white;
-          font-weight: 500;
-        }
-        .button:hover {
-          font-weight: 800;
-        }
-        .button:focus {
-          transition: 1s;
-          font-size: 10px;
-          font-weight: 50;
-        }
-      }
-      .opposite-text {
-        text-align: center;
-        margin: 0 20px;
-        color: whitesmoke;
-      }
-  }
-}
-.user-show {
-  text-transform: uppercase;
-  font-size: 13px;
-  margin: 0px;
-  color: $primarygray;
-  font-family: 'Noto Sans', sans-serif;
-}
-
-// * Error Page
-
-.error-image-container {
-  display: flex;
-  justify-content: center;
-  padding: 50px;
-}
-
-.error-image {
-  border-radius: 10px;
-  box-shadow: black 3px 3px;
-}
-
-// * Image Resizing
-
-.primary-image-container {
-display: flex;
-justify-content: center;
-}
-
-.primary-image {
-  border-radius: 5px; 
-  width: 200px;
-}
-
-.secondary-image-container {
-  display: flex;
-  justify-content: center;
-}
-
-.secondary-image {
-  border-radius: 5px; 
-  width: 200px;
-}
-
-// * Error Handling
-
-.error-style {
-  font-family: 'Noto Sans', sans-serif;
-  color: red;
   font-size: 14px;
-  margin: 10px 10px;
 }
 
-.primary-character-count {
-  font-size: 12px;
+//  * Add, Edit, Login and Registration pages
+
+.form {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0px 0px;
+  .form-div {
+    border: 1px solid blue;
+    padding: 40px 80px;
+    font-size: 14px;
+    text-align: left;
+    background-color: white;
+    @media screen and (max-width:$mobile) {
+      padding: 40px 20px;
+    }
+  }
+  input {
+    padding: 3px 5px;
+    margin: 10px 0px;
+    width: 300px;
+    border: 1px solid blue;
+    background-color: white;
+  }
+  textarea {
+    width: 300px;
+    margin: 10px 0px;
+    padding: 3px 5px;
+    font-size: 14px;
+    border: 1px solid blue;
+    background-color: white;
+  }
+  label {
+    background-color: white;
+  }
+  form {
+    background-color: white;
+  }
 }
 
-.secondary-character-count {
-  font-size: 12px;
+.form-field {
+  background-color: white;
+}
+
+.form-title {
+  text-align: center;
+  margin: 0px 0px 40px;
+  font-size: 15px;
+  background-color: white;
+}
+
+.error {
+  font-size: 13px;
+  margin: 0px 0px 10px 0px;
+  color: blue;
+  background-color: white;
+}
+
+#category {
+  margin: 10px 0px 0px;
+  border: 1px solid blue;
+}
+
+.submit-button {
+  text-align: center;
+  margin: 20px 0px 0px;
+}
+
+.auth-para {
+  background-color: white;
+  margin: 0px;
+  text-align: center;
+  p {
+    background-color: white;
+    margin: 0px;
+  }
+}
+
+.auth-link {
+  color: blue;
+  background-color: white;
+}
+
+// * About Page
+
+.about-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  @media screen and (max-width:$mobile) {
+    height: 60vh;
+  }
+  a {
+    color: blue;
+  }
+}
+
+.about-para {
+  width: 600px;
+  font-size: 14px;
+  @media screen and (max-width:$tablet) {
+    width: 400px;
+  }
+  @media screen and (max-width:$mobile) {
+    width: 300px;
+  }
 }
 

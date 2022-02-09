@@ -25,9 +25,8 @@ function AddComment ({ project, setProject }) {
     e.preventDefault()
     try {
       const res = await axios.post(`/api/projects/${projectId}/comments`, commentText, headers())
-      setProject(res.data)
       setCommentText({ text: '' })
-      console.log(res)
+      setProject(res.data)
     } catch (err) {
       console.log(err)
     }

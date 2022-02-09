@@ -1,11 +1,12 @@
 {
   "workbench.colorCustomizations": {
-    "statusBar.background": "#f4f768",
-    "titleBar.activeBackground": "#f4f768",
-    "titleBar.inactiveBackground": "#f4f768",
+    "statusBar.background": "#ff00c8",
+    "titleBar.activeBackground": "#ff00c8",
+    "titleBar.inactiveBackground": "#ff00c8",
     "statusBar.foreground": "#000",
     "titleBar.inactiveForeground": "#000",
     "titleBar.activeForeground": "#000",
   },
-  "window.title": "EPOP FRONTEND "
+  "window.title": "e-pop-front-end",
+  "python.linting.enabled": false
 }
