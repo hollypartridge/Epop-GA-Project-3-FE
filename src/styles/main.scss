@@ -4,7 +4,7 @@ $tablet: 900px;
 
 * {
   font-family: 'Helvetica', sans-serif;
-  // background-color: #e3ceff;
+  background-color: #e7d5ff;
 }
 
 // * NavBar
@@ -227,7 +227,7 @@ a {
 }
 
 .browse-archive {
-  margin: 20px 0px;
+  margin: 0px 0px 40px;
   display: flex;
   justify-content: center;
   @media screen and (max-width:$mobile) {
@@ -247,6 +247,9 @@ a {
     padding: 8px 14px 4px;
     text-transform: uppercase;
     color: blue;
+    &::placeholder {
+      color: blue;
+    }
   }
 }
 

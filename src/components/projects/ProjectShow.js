@@ -2,7 +2,7 @@
 import React from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { deleteProject, getSingleProject, headers } from '../lib/api'
-import { isOwner } from '../lib/auth'
+import { isAuthenticated, isOwner } from '../lib/auth'
 import Error from '../common/Error'
 import Loading from '../common/Loading'
 import AddComment from './AddComment'
@@ -17,6 +17,7 @@ function ProjectShow() {
   const isLoading = !project && !isError
   const [isFavourite, setIsFavourite] = React.useState(false)
   const [createdAt, setCreatedAt] = React.useState(null)
+  const isAuth = isAuthenticated()
 
   React.useEffect(() => {
     const getData = async () => {
@@ -43,9 +44,13 @@ function ProjectShow() {
   }
 
   const handleFavourites = async () => {
-    setIsFavourite(true)
-    const res = await axios.post(`/api/projects/${projectId}/favourite`, isFavourite, headers())
-    console.log('RES', res)
+    if (isAuth) {
+      setIsFavourite(true)
+      const res = await axios.post(`/api/projects/${projectId}/favourite`, isFavourite, headers())
+      console.log('RES', res)
+    } else {
+      navigate('/login')
+    }
   }
 
   const handleRemoveFavourite = () => {
@@ -124,6 +129,7 @@ function ProjectShow() {
           <p className='description-show'>{project.secondaryDescription}</p>
         </div>
       }
+      {isAuth &&
       <div>
         <div className='projects-we-love-title'>
           <p>🦋 Comments 🦋</p>
@@ -134,7 +140,7 @@ function ProjectShow() {
             setProject = {setProject}
           />
         </div>
-      </div>
+      </div>}
     </section>
   )
 }
