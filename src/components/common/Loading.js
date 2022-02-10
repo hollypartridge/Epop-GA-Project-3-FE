@@ -1,7 +1,10 @@
 function Loading() {
   return (
-    <div>
-      <p>Loading...</p>
+    <div className="error-loading-page">
+      <div className="error-loading-para">
+        <p>Loading.｡.:*☆<br/>
+        </p>
+      </div>
     </div>
   )
 }

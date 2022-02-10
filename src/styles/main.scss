@@ -437,3 +437,26 @@ a {
   }
 }
 
+//  * Error Handling
+
+.error-loading-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button {
+  background-color: transparent;
+  border: 1px solid black;
+  margin: 0px 1px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin: 00px 0px 0px 0px;
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+  }
+}
+
+.error-loading-para {
+  font-size: 14px;
+}
