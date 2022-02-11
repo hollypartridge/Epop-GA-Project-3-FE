@@ -31,8 +31,6 @@ function Registration() {
     }
   }
 
-  console.log('formErrors', formErrors)
-
   return (
     <div className='form'>
       <div className='form-div'>

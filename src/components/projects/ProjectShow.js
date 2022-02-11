@@ -57,8 +57,6 @@ function ProjectShow() {
     setIsFavourite(false)
   }
 
-  console.log(isFavourite)
-
   return (
     <section>
       {isLoading && <Loading />}

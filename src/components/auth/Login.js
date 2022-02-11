@@ -29,8 +29,6 @@ function Login() {
       setIsError(true)
     }
   }
-
-  console.log('FROM', formData)
   
   return (
     <div className='form'>
