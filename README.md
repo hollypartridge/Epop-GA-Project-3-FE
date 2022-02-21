@@ -299,6 +299,7 @@ const isAuth = isAuthenticated()
 ## Future Improvements
 
 * Debug (favourites button and comments).
+* Add ability to share projects to social media.
 
 ## Key Learning
 
