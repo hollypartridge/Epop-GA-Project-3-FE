@@ -175,7 +175,7 @@ An example of data for a project:
 I created the front-end in line with the design of [**hoverstat.es**](https://www.hoverstat.es/ "hoverstat.es"), which gave me a layout and design to take inspiration from.
 
 #### Home Page
-The homepage featured the most recently added project and a curated list of projects we loved. To do this I used an async function to get the data from the API request and then set the primary project with the first project in the array's data and the projects with all the projects' data. To display the projects we loved I worked with David on the backend to create a property `loved` with a Boolean value, changed the seeded data so that our favoruite 8 projects had a value of true and then filtered through the projects on the front-end using a conditional. 
+The homepage featured the most recently added project and a curated list of projects we loved. To do this I used an async function to get the data from the API request and then set the primary project with the first project in the array's data and the projects with all the projects' data. To display the projects we loved I worked with David on the backend to create a property `loved` with a Boolean value, changed the seeded data so that our favourite 8 projects had a value of true and then filtered through the projects on the front-end using a conditional. 
 
 To get the primary video to play on page load I added the `autoPlay` and `muted` attributes. To get the projects we loved videos to play when they were hovered over I used the `onMouseOver` and `onMouseOut` event listeners, the `event.target` and the `.play()` and `.pause()` video methods. I also designed the desktop design feature in SCSS and used the `primaryProject.website` key to display the website URL.
 
